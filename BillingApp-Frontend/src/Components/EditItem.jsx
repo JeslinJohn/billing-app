@@ -69,17 +69,20 @@ function EditItem() {
       }
     }
   };
+  const cancel = () => {
+    navigate("/");
+  };
   <EditValidation />;
 
   return (
-    <div>
+    <div className="add-item-container">
       {apiError && (
         <>
-          <div>{apiError}</div>
+          <div className="error_msg">{apiError}</div>
         </>
       )}
-      <form onSubmit={updateData}>
-        <div>
+      <form className="form" onSubmit={updateData}>
+        <div className="form_input 1">
           <label>
             S. No:
             <input
@@ -91,7 +94,7 @@ function EditItem() {
             {error.serial_no && <span>{error.serial_no}</span>}
           </label>
         </div>
-        <div>
+        <div className="form_input 2">
           <label>
             Item Id:
             <input
@@ -104,7 +107,7 @@ function EditItem() {
             {error.product_id && <span>{error.product_id}</span>}
           </label>
         </div>
-        <div>
+        <div className="form_input 3">
           <label>
             Product Name:
             <input
@@ -116,7 +119,7 @@ function EditItem() {
             {error.product_name && <span>{error.product_name}</span>}
           </label>
         </div>
-        <div>
+        <div className="form_input 4">
           <label>
             Quantity:
             <input
@@ -128,7 +131,7 @@ function EditItem() {
             {error.product_quantity && <span>{error.product_quantity}</span>}
           </label>
         </div>
-        <div>
+        <div className="form_input 5">
           <label>
             Price:
             <input
@@ -140,7 +143,7 @@ function EditItem() {
             {error.product_price && <span>{error.product_price}</span>}
           </label>
         </div>
-        <div>
+        <div className="form_input 6">
           <label>
             Total:
             <input
@@ -153,9 +156,14 @@ function EditItem() {
             {error.total_price && <span>{error.total_price}</span>}
           </label>
           <div>
-            <button type="submit">Update</button>
+            <button className="form_submit" type="submit">
+              Update
+            </button>
           </div>
         </div>
+        <button className="form_cancel" type="submit" onClick={cancel}>
+          Back
+        </button>
       </form>
     </div>
   );
