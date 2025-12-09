@@ -51,9 +51,14 @@ function EditItem() {
     try {
       await axios.put(
         `http://localhost:8090/api/resources/update/${id}`,
-        product
+        product,
+        {
+          headers: {
+            Authorization: `Bearer ${sessionStorage.getItem("authToken")}`
+          }
+        }
       );
-      navigate("/");
+      navigate("/table");
     } catch (err) {
       if (err.response) {
         setApiError(
@@ -70,7 +75,7 @@ function EditItem() {
     }
   };
   const cancel = () => {
-    navigate("/");
+    navigate("/table");
   };
   <EditValidation />;
 
@@ -161,7 +166,7 @@ function EditItem() {
             </button>
           </div>
         </div>
-        <button className="form_cancel" type="submit" onClick={cancel}>
+        <button className="form_cancel" type="button" onClick={cancel}>
           Back
         </button>
       </form>
