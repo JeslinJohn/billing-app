@@ -41,6 +41,10 @@ function AddItem() {
     });
   };
 
+  const cancel = () => {
+    navigate("/table");
+  };
+
   const submitData = async (e) => {
     e.preventDefault();
     setIsLoading(true);
@@ -53,11 +57,15 @@ function AddItem() {
       console.log("Form submission failed due to validation errors.");
     }
 
-    await axios
-      .post("http://localhost:8090/api/resources/create", productData)
+     await axios
+      .post("http://localhost:8090/api/resources/create", productData, {
+        headers: {
+          Authorization: `Bearer ${sessionStorage.getItem("authToken")}`
+        }
+      })
       .then((res) => {
         setApiError(null);
-        navigate("/");
+        navigate("/table");
       })
       .catch((err) => {
         if (err.response) {
@@ -74,9 +82,6 @@ function AddItem() {
         }
       });
     setIsLoading(false);
-  };
-  const cancel = () => {
-    navigate("/");
   };
 
   <Validation />;
