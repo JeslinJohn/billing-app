@@ -6,6 +6,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router";
 import BillTable from "./Components/BillTable";
 import AddItem from "./Components/AddItem";
 import EditItem from "./Components/EditItem";
+import Login from "./Components/Login-RegisterComponent/Login";
+import Register from "./Components/Login-RegisterComponent/Register";
 
 function App() {
   /* const [count, setCount] = useState(0)
@@ -39,7 +41,10 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<BillTable />} />
+        <Route path="/" element={<Login />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/table" element={<BillTable />} />
         <Route path="/add" element={<AddItem />} />
         <Route path="/edit/:id" element={<EditItem />} />
       </Routes>
