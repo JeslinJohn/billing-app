@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 # React + Vite
 
@@ -16,3 +17,6 @@ Currently, two official plugins are available:
 # billing-web-app
 
 > > > > > > > cfd550879eaa965f73308b48aba890c2d0b2def0
+=======
+# billing-web-app
+>>>>>>> cfd550879eaa965f73308b48aba890c2d0b2def0
