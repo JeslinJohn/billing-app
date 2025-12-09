@@ -12,7 +12,11 @@ function BillTable() {
   useEffect(() => {
     setLoading(true);
     axios
-      .get("http://localhost:8090/api/resources/readlist")
+      .get("http://localhost:8090/api/resources/readlist", {
+        headers: {
+          Authorization: `Bearer ${sessionStorage.getItem("authToken")}`
+        }
+      })
       .then((response) => {
         setProduct(response.data);
       })
@@ -45,7 +49,11 @@ function BillTable() {
 
   const handleDelete = async () => {
     try {
-      await axios.delete("http://localhost:8090/api/resources/deleteall");
+      await axios.delete("http://localhost:8090/api/resources/deleteall", {
+        headers: {
+          Authorization: `Bearer ${sessionStorage.getItem("authToken")}`
+        }
+      });
       window.location.reload();
     } catch (error) {
       if (error.response) {
@@ -63,19 +71,23 @@ function BillTable() {
     }
   };
   const delItem = async (id) => {
-    await axios.delete(`http://localhost:8090/api/resources/delete/${id}`);
+   await axios.delete(`http://localhost:8090/api/resources/delete/${id}`, {
+      headers: {
+        Authorization: `Bearer ${sessionStorage.getItem("authToken")}`
+      }
+    });
     window.location.reload();
   };
   return (
-    <div>
+    <div className="error">
       {error && (
         <>
-          <div>{error}</div>
+          <div className="error_message">{error}</div>
         </>
       )}
       {!error && (
-        <table>
-          <thead>
+        <table className="tab">
+          <thead className="header">
             <tr>
               <th>Item ID</th>
               <th>S.No</th>
@@ -87,7 +99,7 @@ function BillTable() {
               <th>Delete</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className="tab_body">
             {products.map((product) => (
               <tr key={product.product_id}>
                 <td>{product.product_id}</td>
@@ -97,13 +109,21 @@ function BillTable() {
                 <td>{product.product_price}</td>
                 <td>{product.total_price}</td>
                 <td>
-                  <Link to={`/edit/${product.product_id}`} state={{ product }}>
-                    ✏️
+                   <Link to={`/edit/${product.product_id}`} state={{ product }}>
+                    <img
+                      className="edit"
+                      src="src/assets/edit.svg "
+                      alt="edit"
+                    ></img>
                   </Link>
                 </td>
                 <td>
                   <Link onClick={() => delItem(`${product.product_id}`)}>
-                    🗑️
+                    <img
+                      className="delete"
+                      src="src/assets/delete.svg "
+                      alt="delete"
+                    ></img>
                   </Link>
                 </td>
               </tr>
@@ -111,8 +131,18 @@ function BillTable() {
           </tbody>
         </table>
       )}
-      <button onClick={handleClick}>New Item</button>
-      <button onClick={handleDelete}>Clear Table</button>
+      <img
+        className="add"
+        onClick={handleClick}
+        src="src/assets/add.svg "
+        alt="add"
+      ></img>
+      <img
+        className="clear"
+        onClick={handleDelete}
+        src="src/assets/clear.svg "
+        alt="clear"
+      ></img>
     </div>
   );
 }
