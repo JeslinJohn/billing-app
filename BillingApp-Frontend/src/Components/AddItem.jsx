@@ -173,7 +173,7 @@ function AddItem() {
             </button>
           </div>
         </div>
-        <button className="form_cancel" type="submit" onClick={cancel}>
+        <button className="form_cancel" type="button" onClick={cancel}>
           Back
         </button>
       </form>
