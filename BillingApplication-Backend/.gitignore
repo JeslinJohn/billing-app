@@ -1,0 +1,67 @@
+HELP.md
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### VS Code ###
+.vscode/
+# Build artifacts
+target/
+build/
+*.jar
+*.war
+*.ear
+
+# IDE specific files
+.idea/
+.vscode/
+.classpath
+.project
+.settings/
+*.iml
+*.ipr
+*.iws
+
+# Log files
+*.log
+logs/
+
+# Sensitive configuration files (adjust as needed)
+application-local.properties
+env.properties
+
+# OS specific files
+.DS_Store
+Thumbs.db
+
+# Maven Wrapper (if used)
+mvnw
+mvnw.cmd
+.mvn/wrapper/maven-wrapper.jar
+.mvn/wrapper/maven-wrapper.properties
